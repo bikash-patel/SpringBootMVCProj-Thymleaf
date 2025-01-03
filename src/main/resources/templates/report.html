@@ -1,0 +1,35 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<center>
+<div>
+<h1>Employee Details</h1>
+<b style="color: red"><span th:text=${result}></span></b> <br>
+	<table border="1px" style="background-color: cyan ">
+		<tr style="background-color: yellow;">
+			<th>EMP ID</th>
+			<th>EMP NAME</th>
+			<th>EMP DEG</th>
+			<th>EMP SALARY</th>
+			<th>DEPT NO</th>
+			<th>Operation</th>
+		</tr>
+				<tr th:each="emp:${employee}" th:if="${!#lists.isEmpty(employee)}">
+					<td th:text="${emp.empid}"></td>
+					<td th:text="${emp.empname}"></td>
+					<td th:text="${emp.empdeg}"></td>
+					<td th:text="${emp.empsalary}"></td>
+					<td th:text="${emp.deptno}"></td>
+					<td><a th:href="@{/employee/edit(id=${emp.empid})}"><img th:src="@{/images/edit.png}" height="40px" width="30px"></a>
+						&nbsp;&nbsp;
+						<a onclick="return confirm('Are you sure want to delete ?')" th:href="@{/employee/delete(id=${emp.empid})}"><img th:src="@{/images/delete.png}" height="40px" width="30px"></a>
+						
+					</td>
+				</tr>
+		<tr th:if="${#lists.isEmpty(employee)}">
+			<td>No Data Found</td>
+		<tr/>
+	</table>
+	<a th:href="@{/employee/home}"><img th:src="@{/images/home.png}" height="40px" width="30px"><br>Home</a> <br>
+	<a th:href="@{/employee/register}"><img th:src="@{/images/add.png}" height="40px" width="30px"><br>Register</a>
+</div>
+</center>

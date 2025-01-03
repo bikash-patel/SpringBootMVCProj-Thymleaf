@@ -1,0 +1,44 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<center>
+<h1>Employee Registration Form</h1>
+	<form th:action="@{/employee/register}"  method="post" th:object="${employee}">  <!-- By default its post and same path from where it called -->
+		<table border="1px" style="background-color: cyan">
+			<tr>
+				<td>Name</td>
+				<td>
+					<input th:field="*{empname}"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Designation</td>
+				<td>
+					<input th:field="*{empdeg}"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Salary</td>
+				<td>
+					<input th:field="*{empsalary}"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Department No</td>
+				<td>
+					<select th:field="*{deptno}">
+						<option value="10">10</option>
+						<option value="20">20</option>
+						<option value="30">30</option>
+						<option value="40">40</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Register"></td>
+				<td><input type="reset" value="Reset"></td>
+			</tr>
+		</table>
+		<a th:href="@{/employee/home}"><img th:src="@{/images/home.png}" height="40px" width="30px"><br>Home</a> <br>
+	</form>
+	
+	</center>
